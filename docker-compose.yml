@@ -1,0 +1,21 @@
+web:
+  image: nginx:latest
+  ports:
+    - 80:80
+  volumes:
+    - .:/var/www/project
+    - ./site.conf:/etc/nginx/conf.d/site.conf
+  links:
+    - php
+php:
+  build: .
+  volumes:
+    - .:/var/www/project
+  links:
+    - mysql
+mysql:
+  image: mariadb:10.0.38
+  ports:
+    - 8081:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
