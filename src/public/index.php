@@ -1,5 +1,6 @@
 <?php
 use Slim\App;
+use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -11,7 +12,9 @@ $config = [
     ],
 ];
 
-$app = new App();
+$configuration = new Container($config);
+
+$app = new App($configuration);
 
 $app->get('/produto[/{nome}]', function (Request $request, Response $response, array $args): Response {
     $limit = $request->getQueryParams()['limit'] ?? 10;
