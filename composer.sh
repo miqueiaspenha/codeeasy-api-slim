@@ -1,2 +1,2 @@
-docker exec -it codeeasy-php-container php composer.phar update "$@"
+docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) composer "$@"
 return $?
