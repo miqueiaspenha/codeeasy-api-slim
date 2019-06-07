@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"php.suggest.basic": false,
-		"php.validate.executablePath": "./php_path.sh",
+		"php.validate.executablePath": "${workspaceRoot}/php_path.sh",
 		"php.validate.run": "onSave",
 		"php.validate.enable": true
 	}

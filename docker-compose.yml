@@ -3,7 +3,7 @@ web:
   ports:
     - 80:80
   volumes:
-    - .:/var/www/project
+    - .:/var/www/html
     - ./site.conf:/etc/nginx/conf.d/site.conf
   links:
     - php
@@ -11,9 +11,11 @@ php:
   container_name: codeeasy-php-container
   build: .
   volumes:
-    - .:/var/www/project
+    - .:/var/www/html
   links:
     - mysql
+  environment:
+    XDEBUG_CONFIG: remote_host=172.17.0.1
 mysql:
   image: mariadb:10.0.38
   ports:
